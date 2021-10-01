@@ -1,5 +1,5 @@
 resource "aws_lambda_event_source_mapping" "sqs_source" {
-  depends_on = [aws_iam_role_policy.sqs_source_permissions]
+  depends_on       = [aws_iam_role_policy.sqs_source_permissions]
   for_each         = { for k, arn in coalesce(var.triggers["sqs"], tomap({})) : k => arn }
   event_source_arn = each.value
   function_name    = module.lambda.function.arn
@@ -8,7 +8,7 @@ resource "aws_lambda_event_source_mapping" "sqs_source" {
 }
 
 data "aws_iam_policy_document" "sqs_lambda_permissions" {
-  count = length(keys(coalesce(var.triggers["sqs"], tomap({}))))
+  count = length(keys(coalesce(var.triggers["sqs"], tomap({})))) > 0 ? 1 : 0
 
   dynamic "statement" {
     for_each = { for k, arn in coalesce(var.triggers["sqs"], tomap({})) : k => arn }
@@ -26,7 +26,7 @@ data "aws_iam_policy_document" "sqs_lambda_permissions" {
 }
 
 resource "aws_iam_role_policy" "sqs_source_permissions" {
-  count  = length(keys(coalesce(var.triggers["sqs"], tomap({}))))
+  count  = length(keys(coalesce(var.triggers["sqs"], tomap({})))) > 0 ? 1 : 0
   name   = "${local.function_name}SQSSourceAccess"
   policy = data.aws_iam_policy_document.sqs_lambda_permissions[0].json
   role   = module.lambda.execution_role.id

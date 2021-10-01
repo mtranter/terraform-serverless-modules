@@ -10,13 +10,14 @@ module "queue" {
   content_based_deduplication = var.content_based_deduplication
   deduplication_scope         = var.deduplication_scope
   fifo_throughput_limit       = var.fifo_throughput_limit
+  message_retention_seconds   = var.message_retention_seconds
 }
 
 resource "aws_sns_topic_subscription" "sqs_target" {
-  topic_arn = var.sns_topic_arn
-  protocol  = "sqs"
-  endpoint  = module.queue.queue.arn
-  filter_policy = var.filter_policy == null ? null : jsonencode(var.filter_policy)
+  topic_arn            = var.sns_topic_arn
+  protocol             = "sqs"
+  endpoint             = module.queue.queue.arn
+  filter_policy        = var.filter_policy == null ? null : jsonencode(var.filter_policy)
   raw_message_delivery = true
 }
 

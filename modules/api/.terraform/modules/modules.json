@@ -1,1 +1,0 @@
-{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"example_cors","Source":"mewa/apigateway-cors/aws","Version":"2.0.1","Dir":".terraform/modules/example_cors"}]}

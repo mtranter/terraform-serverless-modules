@@ -17,7 +17,6 @@ resource "aws_iam_role" "iam_for_lambda" {
 EOF
 }
 
-
 resource "aws_lambda_function" "lambda" {
   function_name                  = var.name
   description                    = var.description

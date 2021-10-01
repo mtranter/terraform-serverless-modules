@@ -89,7 +89,7 @@ module "errors_alarm" {
   namespace   = "AWS/Lambda"
   metric_name = "Errors"
   statistic   = "Maximum"
-GreaterThanOrEqualToThreshold
+
   dimensions = {
     FunctionName = module.function.function.function_name
   }

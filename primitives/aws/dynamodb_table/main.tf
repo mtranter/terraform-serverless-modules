@@ -26,11 +26,11 @@ locals {
   ])
 
   lsi_map = {
-    for k in var.local_secondary_indexes: k.name => k
+    for k in var.local_secondary_indexes : k.name => k
   }
 
   gsi_map = {
-    for k in var.global_secondary_indexes: k.name => k
+    for k in var.global_secondary_indexes : k.name => k
   }
 
   attributes = { for a in toset(concat(local.key_attributes, local.gsi_attributes, local.lsi_attributes)) : a.name => a.type }

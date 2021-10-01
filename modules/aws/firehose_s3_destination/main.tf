@@ -13,7 +13,7 @@ resource "aws_iam_role" "firehose_role" {
         "Service": "firehose.amazonaws.com"
       },
       "Effect": "Allow",
-      "Sid": ""
+      "Sid": "1"
     }
   ]
 }
