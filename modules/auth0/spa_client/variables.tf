@@ -15,10 +15,10 @@ variable "allowed_origins" {
 }
 
 variable "client_grants" {
-  type = list({
+  type = list(object({
     audience = string
     scopes = list(string)
-  })
+  }))
 }
 
 variable "grant_types" {
@@ -57,11 +57,11 @@ variable refresh_token_lifetime {
   default = 84600
 }
 variable refresh_infinite_idle_token_lifetime {
-  type = number
+  type = bool
   default = false
 }
 variable refresh_infinite_token_lifetime {
-  type = number
+  type = bool
   default = false
 }
 variable refresh_idle_token_lifetime {
