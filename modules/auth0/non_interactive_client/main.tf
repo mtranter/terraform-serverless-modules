@@ -14,7 +14,7 @@ resource "auth0_client" "app" {
     rotation_type                = var.refresh_rotation_type
     expiration_type              = var.refresh_expiration_type
     leeway                       = var.refresh_leeway
-    token_lifetime               = var.refresh_idle_token_lifetime
+    token_lifetime               = var.refresh_token_lifetime
     infinite_idle_token_lifetime = var.refresh_infinite_idle_token_lifetime
     infinite_token_lifetime      = var.refresh_infinite_token_lifetime
     idle_token_lifetime          = var.refresh_idle_token_lifetime
