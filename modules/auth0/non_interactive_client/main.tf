@@ -4,7 +4,7 @@ resource "auth0_client" "app" {
   is_first_party             = true
   token_endpoint_auth_method = "client_secret_basic"
   oidc_conformant            = true
-  grant_types                = "client_credentials"
+  grant_types                = ["client_credentials"]
   jwt_configuration {
     lifetime_in_seconds = var.jwt_lifetime_seconds
     secret_encoded      = var.jwt_secret_encoded
