@@ -54,7 +54,7 @@ variable refresh_leeway {
 }
 variable refresh_token_lifetime {
   type = number
-  default = 84600
+  default = 2592000
 }
 variable refresh_infinite_idle_token_lifetime {
   type = bool
@@ -66,5 +66,5 @@ variable refresh_infinite_token_lifetime {
 }
 variable refresh_idle_token_lifetime {
   type = number
-  default = 3600
+  default = 1296000
 }
