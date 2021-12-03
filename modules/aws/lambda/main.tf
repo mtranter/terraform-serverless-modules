@@ -25,7 +25,7 @@ data "aws_iam_policy_document" "can_log" {
 
 module "dlq" {
   count      = var.create_dlq == true ? 1 : 0
-  source     = "./../../primitives/aws/sqs_queue"
+  source     = "./../../../primitives/aws/sqs_queue"
   create_dlq = false
   queue_name = "${var.name}_dlq"
   tags       = var.tags
@@ -53,7 +53,7 @@ resource "aws_lambda_layer_version" "layers" {
 }
 
 module "function" {
-  source           = "./../../primitives/aws/lambda"
+  source           = "./../../../primitives/aws/lambda"
   filename         = var.filename
   handler          = var.handler
   name             = var.name
