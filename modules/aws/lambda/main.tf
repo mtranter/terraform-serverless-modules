@@ -5,7 +5,7 @@ locals {
 data "aws_region" "current" {}
 
 module "log_group" {
-  source = "./../../primitives/aws/log_group"
+  source = "./../../../primitives/aws/log_group"
   name   = "/aws/lambda/${var.name}"
 }
 
