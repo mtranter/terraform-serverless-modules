@@ -94,7 +94,7 @@ module "errors_alarm" {
     FunctionName = module.function.function.function_name
   }
 
-  alarm_actions = [data.aws_sns_topic.errors_topic.arn]
+  alarm_actions = var.alarm_sns_topic_arn == null ? [] : [var.alarm_sns_topic_arn]
 }
 
 
