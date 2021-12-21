@@ -1,6 +1,6 @@
 
 module "queue" {
-  source                      = "./../../primitives/aws/sqs_queue"
+  source                      = "./../../../primitives/aws/sqs_queue"
   queue_name                  = var.queue_name
   is_fifo                     = var.is_fifo
   create_dlq                  = var.create_dlq
