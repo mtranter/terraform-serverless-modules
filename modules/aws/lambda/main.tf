@@ -5,7 +5,7 @@ locals {
 data "aws_region" "current" {}
 
 module "log_group" {
-  source = "./../../primitives/aws/log_group"
+  source = "./../../../primitives/aws/log_group"
   name   = "/aws/lambda/${var.name}"
 }
 
@@ -25,7 +25,7 @@ data "aws_iam_policy_document" "can_log" {
 
 module "dlq" {
   count      = var.create_dlq == true ? 1 : 0
-  source     = "./../../primitives/aws/sqs_queue"
+  source     = "./../../../primitives/aws/sqs_queue"
   create_dlq = false
   queue_name = "${var.name}_dlq"
   tags       = var.tags
@@ -53,7 +53,7 @@ resource "aws_lambda_layer_version" "layers" {
 }
 
 module "function" {
-  source           = "./../../primitives/aws/lambda"
+  source           = "./../../../primitives/aws/lambda"
   filename         = var.filename
   handler          = var.handler
   name             = var.name
@@ -94,7 +94,7 @@ module "errors_alarm" {
     FunctionName = module.function.function.function_name
   }
 
-  alarm_actions = [data.aws_sns_topic.errors_topic.arn]
+  alarm_actions = var.alarm_sns_topic_arn == null ? [] : [var.alarm_sns_topic_arn]
 }
 
 

@@ -104,3 +104,9 @@ variable "create_error_alarm" {
   type = bool
   default = true
 }
+
+
+variable "alarm_sns_topic_arn" {
+  type = string
+  default = null
+}

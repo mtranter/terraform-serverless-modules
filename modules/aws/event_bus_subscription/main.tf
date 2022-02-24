@@ -1,5 +1,5 @@
 module "subscription" {
-  source = "./../../primitives/aws/event_bridge_subscription"
+  source = "./../../../primitives/aws/event_bridge_subscription"
   detail_types = var.detail_types
   event_bus_name = var.event_bus_name
   subscription_name = var.subscription_name
