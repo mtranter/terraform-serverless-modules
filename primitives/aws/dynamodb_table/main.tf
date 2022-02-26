@@ -44,7 +44,8 @@ resource "aws_dynamodb_table" "table" {
   write_capacity = var.provisioned_capacity == null ? null : var.provisioned_capacity.write
   billing_mode   = var.provisioned_capacity == null ? "PAY_PER_REQUEST" : "PROVISIONED"
   tags           = var.tags
-
+  stream_enabled = var.stream_enabled
+  stream_view_type = var.stream_view_type
   point_in_time_recovery {
     enabled = var.point_in_time_recovery_enabled
   }
